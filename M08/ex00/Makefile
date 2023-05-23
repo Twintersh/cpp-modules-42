@@ -1,7 +1,7 @@
 CC = c++ 
-NAME = ex02
-SRC = main.cpp
-HEADER = Array.hpp
+NAME = ex00
+SRC = easyfind.cpp
+HEADER = easyfind.hpp
 OBJ=$(SRC:.cpp=.o)
 CFLAGS = -Werror -Wall -Wextra -g3 -std=c++98
 
