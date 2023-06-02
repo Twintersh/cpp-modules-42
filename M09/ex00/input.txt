@@ -1,0 +1,11 @@
+date | value
+
+run : all
+	clear && ./$(NAME) input.txt ; echo ""
+
+fclean : clean
+	@rm -rf $(NAME)
+
+.PHONY : clean re fclean all
+
+# 6h47

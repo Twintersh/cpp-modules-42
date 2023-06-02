@@ -1,7 +1,7 @@
 CC = c++ 
-NAME = ex00
-SRC = main.cpp
-HEADER = easyfind.hpp
+NAME = btc
+SRC = main.cpp BitcoinExchange.cpp
+HEADER = BitcoinExchange.hpp
 OBJ=$(SRC:.cpp=.o)
 CFLAGS = -Werror -Wall -Wextra -g3 -std=c++98
 
@@ -19,9 +19,11 @@ clean :
 	rm -rf $(OBJ)
 
 run : all
-	clear && ./$(NAME)
+	clear && ./$(NAME) input.txt ; echo ""
 
 fclean : clean
 	@rm -rf $(NAME)
 
 .PHONY : clean re fclean all
+
+# 6h47

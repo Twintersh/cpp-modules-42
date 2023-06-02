@@ -1,7 +1,7 @@
 CC = c++ 
-NAME = ex00
-SRC = main.cpp
-HEADER = easyfind.hpp
+NAME = ex01
+SRC = main.cpp Span.cpp
+HEADER = Span.hpp
 OBJ=$(SRC:.cpp=.o)
 CFLAGS = -Werror -Wall -Wextra -g3 -std=c++98
 
@@ -19,7 +19,7 @@ clean :
 	rm -rf $(OBJ)
 
 run : all
-	clear && ./$(NAME)
+	clear && ./$(NAME) ; echo ""
 
 fclean : clean
 	@rm -rf $(NAME)
