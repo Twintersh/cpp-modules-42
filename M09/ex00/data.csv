@@ -246,15 +246,6 @@ date,exchange_rate
 2011-01-04,0.3
 2011-01-07,0.32
 2011-01-10,0.33
-run : all
-	clear && ./$(NAME) input.txt ; echo ""
-
-fclean : clean
-	@rm -rf $(NAME)
-
-.PHONY : clean re fclean all
-
-# 6h47
 2011-01-13,0.42
 2011-01-16,0.4
 2011-01-19,0.35
@@ -1330,15 +1321,6 @@ fclean : clean
 2019-11-03,9206.16
 2019-11-06,9343.34
 2019-11-09,8809.41
-run : all
-	clear && ./$(NAME) input.txt ; echo ""
-
-fclean : clean
-	@rm -rf $(NAME)
-
-.PHONY : clean re fclean all
-
-# 6h47
 2019-11-12,8801.52
 2019-11-15,8457.69
 2019-11-18,8175.99

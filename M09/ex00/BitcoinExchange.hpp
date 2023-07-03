@@ -10,7 +10,7 @@
 #include <limits.h>
 #include <algorithm>
 
-typedef typename std::map<std::string, float>::iterator map_iterator;
+typedef typename std::map<std::string, double>::iterator map_iterator;
 
 class BitcoinExchange
 {
@@ -24,9 +24,9 @@ class BitcoinExchange
 		static void			parsing_data(std::ifstream &data);
 		static int			parsing_file(std::ifstream &file);
 		static bool			check_date(const std::string &date);
-		static float		find_closest_date(const std::string &curDate);
+		static double		find_closest_date(const std::string &curDate);
 
-		static std::map<std::string, float> _data;
+		static std::map<std::string, double> _data;
 
 	public :
 		static void calculate(std::ifstream &file, std::ifstream &data);

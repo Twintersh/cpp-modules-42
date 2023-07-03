@@ -16,7 +16,6 @@ int main(int argc, char **argv)
 			std::cout << "Error: Cannot open " << argv[1] << std::endl;
 		return (1);
 	}
-
 	BitcoinExchange::calculate(file, data);
 	return (0);
 }

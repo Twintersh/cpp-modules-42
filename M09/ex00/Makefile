@@ -19,7 +19,8 @@ clean :
 	rm -rf $(OBJ)
 
 run : all
-	clear && ./$(NAME) input.txt ; echo ""
+	clear && ./$(NAME) input.txt
+	@echo ""
 
 fclean : clean
 	@rm -rf $(NAME)
