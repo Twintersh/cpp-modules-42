@@ -1,7 +1,7 @@
 CC = c++ 
-NAME = RPN
-SRC = main.cpp RPN.cpp
-HEADER = RPN.hpp
+NAME = PmergeMe
+SRC = main.cpp PmergeMe.cpp
+HEADER = PmergeMe.hpp
 OBJ=$(SRC:.cpp=.o)
 CFLAGS = -Werror -Wall -Wextra -g3 -std=c++98
 
@@ -19,11 +19,9 @@ clean :
 	rm -rf $(OBJ)
 
 run : all
-	clear && ./$(NAME) "$(ARG)" ; echo ""
+	clear && ./$(NAME) "5 4 3 2 1" ; echo ""
 
 fclean : clean
 	@rm -rf $(NAME)
 
 .PHONY : clean re fclean all
-
-# 

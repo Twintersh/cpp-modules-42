@@ -8,7 +8,7 @@ int main(void)
 		std::cout << a << std::endl;
 	}
 	// */
-	// /* TEST 2 : Errors Exceptions
+	/* TEST 2 : Errors Exceptions
 	{
 		try{
 				// TOO LOW

@@ -14,6 +14,9 @@ $(NAME) : $(OBJ)
 
 re : fclean all
 
+run : all
+	clear && ./$(NAME)
+
 clean :
 	rm -rf $(OBJ)
 
