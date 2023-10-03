@@ -17,19 +17,17 @@ void ScalarConverter::convert(const std::string &number){
 			ScalarConverter::convertFromDouble(number);
 			break;
 		default:
-			if (number == "+inf" || number == "-inf")
+			if (number == "+inf" || number == "-inf" || number == "nan")
 				ScalarConverter::convertFromDouble(number);
-			else if (number == "+inff" || number == "-inff")
-				ScalarConverter::convertFromFloat(number, true);
-			else if (number == "nan")
-				ScalarConverter::convertFromDouble(number);
-			else if (number == "nanf")
+			else if (number == "+inff" || number == "-inff" || number == "nanf")
 				ScalarConverter::convertFromFloat(number, true);
 			else
 				std::cout << "You can't convert a string." << std::endl;
 			break;
 	}
 }
+
+
 
 type ScalarConverter::getNumberType(const std::string &number){
 	bool isDecimal = false;
@@ -86,7 +84,7 @@ void	ScalarConverter::convertFromFloat(const std::string &number, bool special){
 	// print int
 	int intNb;
 	std::cout << "int   : " << std::flush;
-	if (floatNb > MAXINT || floatNb < MININT)
+	if (floatNb > MAXINT || floatNb < MININT || std::isnan(floatNb))
 		std::cout << "impossible" << std::endl;
 	else{
 		intNb = static_cast<int>(floatNb);
@@ -121,7 +119,7 @@ void	ScalarConverter::convertFromDouble(const std::string &number){
 		std::cout << "char  : " << std::flush;
 		if (doubleNb < -128 || doubleNb > 127){
 			std::cout << "impossible" << std::endl;
-		}else if (doubleNb >= 32 && doubleNb < 127 ){
+		}else if (doubleNb >= 32 && doubleNb < 127){
 			charNb = static_cast<char>(doubleNb);
 			std::cout << "'" << charNb << "'" << std::endl;
 		}else{
@@ -131,7 +129,7 @@ void	ScalarConverter::convertFromDouble(const std::string &number){
 		// print int
 		int intNb;
 		std::cout << "int   : " << std::flush;
-		if (doubleNb > MAXINT || doubleNb < MININT)
+		if (doubleNb > MAXINT || doubleNb < MININT || std::isnan(doubleNb))
 			std::cout << "impossible" << std::endl;
 		else{
 			intNb = static_cast<int>(doubleNb);

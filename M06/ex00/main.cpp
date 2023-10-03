@@ -57,7 +57,7 @@ int main(void)
 	std::cout << std::endl;
 
 	std::cout << RED "+nan" WHT << std::endl;
-	ScalarConverter::convert("nanf");
+	ScalarConverter::convert("nan");
 	std::cout << std::endl;
 
 	return (0);

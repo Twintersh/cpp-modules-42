@@ -5,20 +5,20 @@ bool RPN::calculate(const std::string &expression)
 	std::istringstream	strm(expression);
 	std::stack<int>		numbers;
 	int	a, b;
-	
+
 	for (std::string str ; strm >> str ;)
 	{
 		if (str.length() > 1 || (!isdigit(str[0]) && !strchr("+-*/", str[0])))
 			return (1);
 		if (isdigit(str[0])){
-			numbers.push(str[0] - '0');
+			numbers.push(	str[0] - '0');
 			continue;
 		}
 		if (numbers.size() < 2)
 			return (1);
-		a = numbers.top();
-		numbers.pop();
 		b = numbers.top();
+		numbers.pop();
+		a = numbers.top();
 		numbers.pop();
 		switch (str[0]){
 			case ('+'):

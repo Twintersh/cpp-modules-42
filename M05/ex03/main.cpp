@@ -9,7 +9,7 @@ int main(void)
 	Bureaucrat charles("charles", 10);
 
 	// oui = denis.makeForm("robotomy request", "sid");
-	// oui = denis.makeForm("shrubbery creation", "sid");
+	oui = denis.makeForm("shrubbery creation", "sid");
 	// oui = denis.makeForm("presidential pardon", "sid");
 	// oui = denis.makeForm("vjruioewg ebi", "sid");
 

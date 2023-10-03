@@ -5,12 +5,13 @@
 #include <fstream>
 #include <cstdlib>
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <sstream>
 #include <limits.h>
 #include <algorithm>
 
-typedef typename std::map<std::string, double>::iterator map_iterator;
+typedef std::map<std::string, double>::iterator map_iterator;
 
 class BitcoinExchange
 {

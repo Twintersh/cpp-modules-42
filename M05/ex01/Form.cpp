@@ -55,11 +55,11 @@ Form::~Form(void){
 
 // Exceptions
 
-const char * Form::GradeTooLowException::what(void) const throw(){
+const char *Form::GradeTooLowException::what(void) const throw(){
 	return ("Error: Grade too low!");
 }
 
-const char * Form::GradeTooHighException::what(void) const throw(){
+const char *Form::GradeTooHighException::what(void) const throw(){
 	return ("Error: Grade too high!");
 }
 

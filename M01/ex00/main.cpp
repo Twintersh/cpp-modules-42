@@ -4,7 +4,7 @@
 
 int main(void)
 {
-	Zombie jim("yo");
+	Zombie jim("jim");
 	Zombie *pascal = newZombie("pascal");
 	randomChump("Siphano");
 

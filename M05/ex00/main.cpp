@@ -16,9 +16,9 @@ int main(void)
 				// TOO HIGH
 			// Bureaucrat b("Nadege", -10);
 				// TOO HIGH 2
-			Bureaucrat c("Denis", 1);
-			std::cout << c << std::endl;
-			c.increaseGrade();
+			// Bureaucrat c("Denis", 1);
+			// std::cout << c << std::endl;
+			// c.increaseGrade();
 				// TOO LOW 2
 			// Bureaucrat d("Catherine", 150);
 			// std::cout << d << std::endl;

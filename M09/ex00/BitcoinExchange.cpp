@@ -40,6 +40,7 @@ int BitcoinExchange::parsing_file(std::ifstream &file)
 {
 	std::string	line;
 	std::string	date;
+	std::string limit;
 	char		delimiter;
 	double		value;
 	double		result;
@@ -50,7 +51,8 @@ int BitcoinExchange::parsing_file(std::ifstream &file)
 	while (std::getline(file, line, '\n'))
 	{
 		std::istringstream streamLine(line);
-		if ((streamLine >> date >> delimiter >> value) && delimiter == '|' && check_date(date))
+		if ((streamLine >> date >> delimiter >> value) && delimiter == '|'
+			&& check_date(date) && streamLine.peek() == EOF)
 		{
 			if (value < 0)
 				std::cout << "Error: not a positive number." << std::endl;
@@ -59,7 +61,7 @@ int BitcoinExchange::parsing_file(std::ifstream &file)
 			else
 			{
 				result = find_closest_date(date) * value;
-				std::cout << date << " => " << value << " = " << result << std::endl;
+				std::cout << date << " => " << std::setprecision(8) << value << " = " << result << std::endl;
 			}
 		}
 		else

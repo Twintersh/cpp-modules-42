@@ -5,7 +5,7 @@
 
 int main(void)
 {
-	// /* RobotomyRequestForm sign 72, exex 45
+	/* RobotomyRequestForm sign 72, exex 45
 	try{
 		RobotomyRequestForm a("siphano");
 		RobotomyRequestForm b(a);
@@ -19,7 +19,7 @@ int main(void)
 		serge.executeForm(b);
 	}catch (std::exception &e){
 		std::cout << e.what() << std::endl;
-		return (-1);
+		return (1);
 	}
 	// */
 	/* PresidentialPardonForm sign 25, exec 5
@@ -37,11 +37,11 @@ int main(void)
 			std::cout << "Hello" << std::endl;
 		}catch (std::exception &e){
 			std::cout << e.what() << std::endl;
-			return (-1);
+			return (1);
 		}
 	}
 	// */
-	/* ShrubberyCreationForm sign 145, exec 137
+	// /* ShrubberyCreationForm sign 145, exec 137
 	{
 		try{
 			ShrubberyCreationForm a("target");
@@ -54,7 +54,7 @@ int main(void)
 			b.execute(didier);
 		}catch (std::exception &e){
 			std::cout << e.what() << std::endl;
-			return (-1);
+			return (1);
 		}
 	}
 	// */

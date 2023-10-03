@@ -1,6 +1,6 @@
-CC = c++
-NAME = test
-SRC = test.cpp
+CC = c++ 
+NAME = harlFilter
+SRC = main.cpp Harl.cpp
 OBJ=$(SRC:.cpp=.o)
 CFLAGS = -Werror -Wall -Wextra -g3 -std=c++98
 

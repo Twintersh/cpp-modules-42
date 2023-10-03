@@ -1,5 +1,5 @@
 CC = c++ 
-NAME = FixedPoint
+NAME = ex01 
 SRC = Fixed.cpp main.cpp
 OBJ=$(SRC:.cpp=.o)
 CFLAGS = -Werror -Wall -Wextra -g3 -std=c++98
@@ -13,9 +13,6 @@ $(NAME) : $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 re : fclean all
-
-run : all
-	./$(NAME) 
 
 clean :
 	rm -rf $(OBJ)

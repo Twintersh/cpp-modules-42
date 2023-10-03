@@ -2,10 +2,32 @@
 # define PMERGEME_HPP
 
 #include <iostream>
-#include <list>
+#include <algorithm>
+#include <iomanip>
+#include <deque>
 #include <vector>
 #include <sstream>
+#include <ctime>
 #include <cstdlib>
+#include <utility>
+#include <climits>
+
+typedef std::vector<int>					vector_int;
+typedef std::vector<std::pair<int, int> >	vector_pair;
+
+typedef std::deque<int> 					deque_int;
+typedef std::deque<std::pair<int, int> >	deque_pair;
+
+template <typename T>
+void printContainer(const T &toPrint, std::string msg)
+{
+	typename T::const_iterator it;
+	std::cout << msg;
+
+	for (it = toPrint.begin() ; it != toPrint.end() ; it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+}
 
 class PmergeMe
 {
@@ -13,15 +35,15 @@ class PmergeMe
 		PmergeMe(void);
 		PmergeMe(const PmergeMe &toCopy);
 		~PmergeMe(void);
-		// PmergeMe &operator= (const PmergeMe &toCopy);
+		static vector_int::iterator	binarySearchVector(int target, vector_int &vect);
+		static deque_int::iterator 	binarySearchDeque(int target, deque_int &deq);
+
 
 	public :
-		static void endMergeVector(std::vector<int> &vect, std::vector<int> &first, std::vector<int> &last);
-		static void mergeVector(std::vector<int> &vect);
-		static void insertVector(std::vector<int> &vect);
-		static void sortVector(std::vector<int> &vect);
+		static vector_int			fordJohnsonVector(vector_int X);
+		static deque_int			fordJohnsonDeque(deque_int X);
+		
 
-		// static void sortList(std::list<int> &list);
 };
 
 #endif

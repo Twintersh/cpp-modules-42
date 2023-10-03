@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <iomanip>
 #include <iostream>
+#include <cmath>
 
 #define BLK "\e[0;30m"
 #define RED "\e[0;31m"
@@ -17,15 +18,14 @@
 
 #define MAXINT 2147483647
 #define MININT -2147483648
-#define MAXFLOAT 340282346638528859811704183484516925440.0000000000000000
 #define MINFLOAT -340282346638528859811704183484516925440.0000000000000000
 
 enum type{
-	CHAR, // 0
-	INT, // 1
-	FLOAT, // 2
-	DOUBLE, // 3
-	UNKNOWN // 4
+	CHAR,
+	INT,
+	FLOAT,
+	DOUBLE,
+	UNKNOWN
 };
 
 class ScalarConverter

@@ -1,75 +1,143 @@
 #include "PmergeMe.hpp"
 
-// vector
-void PmergeMe::endMergeVector(std::vector<int> &vect, std::vector<int> &first, std::vector<int> &last)
+template <typename Temp>
+static typename Temp::iterator ft_find(Temp&container, int target)
 {
-	while (!first.empty() && !last.empty())
+	for (typename Temp::iterator it = container.begin() ; it != container.end() ; it++){
+		if (it->first == target)
+			return (it);
+	}
+	return (container.end());
+}
+
+// DEQUE
+
+deque_int PmergeMe::fordJohnsonDeque(deque_int X)
+{
+	int n = X.size();
+	deque_pair deqPair;
+	deque_int S;
+
+	if (n == 1)
+		return (X);
+	// create the pairs
+	for (deque_int::iterator it = X.begin() ; it != X.end() ; it++)
 	{
-		if (first.begin() < last.begin()){
-			vect.push_back(*first.begin());
-			first.erase(first.begin());
-		}else{
-			vect.push_back(*last.begin());
-			last.erase(last.begin());
-		}
+		deque_int::iterator it2 = it;
+		it++;
+		if (it == X.end())
+			break;
+		std::pair<int, int> pair;
+		pair.first = (*it > *it2) ? *it : *it2;
+		pair.second = (*it > *it2) ? *it2 : *it;
+		deqPair.push_back(pair);
 	}
-	if (!first.empty())
-		vect.push_back(*first.begin());
-	if (!last.empty())
-		vect.push_back(*last.begin());
-	std::cout << *(vect.end()) << std::endl;
+	// put max of each pair into S
+	for (deque_pair::iterator it = deqPair.begin() ; it != deqPair.end() ; it++)
+		S.push_back(it->first);
+
+	if (X.size() % 2)
+		S.push_back(X.back());
+	S = PmergeMe::fordJohnsonDeque(S);
+	// Put the element that was paired with the first element in S at the top (avoid one step)
+	deque_pair::iterator smallest = ft_find(deqPair, S.front());
+	if (smallest != deqPair.end()){
+		S.insert(S.begin(), smallest->second);
+		deqPair.erase(smallest);
+	}
+	// Binary search to put the paired elements in S
+	for (deque_pair::iterator it = deqPair.begin() ; it != deqPair.end() ; it++)
+		S.insert(PmergeMe::binarySearchDeque(it->second, S), it->second);
+	
+	return (S);
+}
+
+deque_int::iterator PmergeMe::binarySearchDeque(int target, deque_int &deq)
+{
+	int left = 0;
+	int right = deq.size();
+	int mid;
+	
+	while (left <= right){
+		mid = (right + left) / 2;
+		if (deq[mid] > target)
+			right = mid - 1;
+		else if (deq[mid] < target) 
+			left = mid + 1;
+	}
+	deque_int::iterator it = deq.begin();
+	std::advance(it, left);
+	return (it);
 }
 
 
-void PmergeMe::mergeVector(std::vector<int> &vect)
+// VECTORS
+
+vector_int PmergeMe::fordJohnsonVector(vector_int X)
 {
-	if (vect.size() < 4){
-		insertVector(vect);
-		return ;
-	}
-	unsigned int mid = vect.size() / 2;
+	int n = X.size();
+	vector_pair vectPair;
+	vector_int S;
 
-	std::vector<int> first(vect.begin(), vect.begin() + mid);
-	std::vector<int> last(vect.begin() + mid, vect.end());
-
-	mergeVector(first);
-	mergeVector(last);
-	vect.clear();
-	endMergeVector(vect, first, last);
-}
-
-void PmergeMe::insertVector(std::vector<int> &vect)
-{
-	for (unsigned int i = 0 ; i < vect.size() ; i++)
+	if (n == 1)
+		return (X);
+	// create the pairs
+	for (vector_int::iterator it = X.begin() ; it != X.end() ; it++)
 	{
-		int key = vect[i];
-		int j = vect[i] - 1;
-
-		while (key < vect[i] && j <= 0){
-			vect[j + 1] = vect[j];
-			--j;
-		}
-		vect[j - 1] = key;
+		vector_int::iterator it2 = it;
+		it++;
+		if (it == X.end())
+			break;
+		std::pair<int, int> pair;
+		pair.first = (*it > *it2) ? *it : *it2;
+		pair.second = (*it > *it2) ? *it2 : *it;
+		vectPair.push_back(pair);
 	}
+	// put max of each pair into S
+	for (vector_pair::iterator it = vectPair.begin() ; it != vectPair.end() ; it++)
+		S.push_back(it->first);
+
+	if (X.size() % 2)
+		S.push_back(X.back());
+	S = PmergeMe::fordJohnsonVector(S);
+	// Put the element that was paired with the first element in S at the top (avoid one step)
+	vector_pair::iterator smallest = ft_find(vectPair, S.front());
+	if (smallest != vectPair.end()){
+		S.insert(S.begin(), smallest->second);
+		vectPair.erase(smallest);
+	}
+	// Binary search to put the paired elements in S
+	for (vector_pair::iterator it = vectPair.begin() ; it != vectPair.end() ; it++)
+		S.insert(PmergeMe::binarySearchVector(it->second, S), it->second);
+	
+	return (S);
 }
 
-void PmergeMe::sortVector(std::vector<int> &vect)
+vector_int::iterator PmergeMe::binarySearchVector(int target, vector_int &vect)
 {
-	mergeVector(vect);
+	int left = 0;
+	int right = vect.size();
+	int mid;
+	
+	while (left <= right){
+		mid = (right + left) / 2;
+		if (vect[mid] > target)
+			right = mid - 1;
+		else if (vect[mid] < target) 
+			left = mid + 1;
+	}
+	vector_int::iterator it = vect.begin();
+	std::advance(it, left);
+	return (it);
 }
-
-// list
-
-// void PmergeMe::sortList(std::vector<int> &list)
-// {
-// }
 
 // constructors / destructors
 
 PmergeMe::PmergeMe(void)
 {}
 
-PmergeMe::PmergeMe(const PmergeMe &toCopy){
+PmergeMe::PmergeMe(const PmergeMe &toCopy)
+{
 	*this = toCopy;
 }
 

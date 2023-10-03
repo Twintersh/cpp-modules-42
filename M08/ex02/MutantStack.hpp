@@ -11,10 +11,10 @@ class MutantStack : public std::stack<T, Container> {
 			*this = toCopy;
 		};
 		~MutantStack(void) {};
-		MutantStack<T, Container> &operator=(MutantStack<T, Container> &toCopy){
+		MutantStack<T, Container> &operator=(const MutantStack<T, Container> &toCopy){
 			if (this == &toCopy)
 				return (*this);
-			*this = toCopy;
+			this->std::stack<T, Container>::operator=(toCopy);
 			return (*this);
 		};
 

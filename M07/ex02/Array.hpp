@@ -9,7 +9,7 @@ class Array
 {
 	private:
 		int	_length;
-		T			*_array;
+		T	*_array;
 
 	public:
 		int	size(void) const{

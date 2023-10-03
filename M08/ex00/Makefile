@@ -1,4 +1,4 @@
-CC = c++ 
+CC = c++
 NAME = ex00
 SRC = main.cpp
 HEADER = easyfind.hpp
